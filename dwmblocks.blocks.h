@@ -14,6 +14,8 @@ static const Block blocks[] = {
 {" CPU: ","bash ~/repos/personal/dwmblocks/status.sh status_cpu",1,0},
 {" CAP: ","bash ~/repos/personal/dwmblocks/status.sh status_caps",1,0},
 {" IP: ","bash ~/repos/personal/dwmblocks/status.sh status_ip",1,0},
+{" NET: ","bash ~/repos/personal/dwmblocks/status.sh status_internet_access",1,0},
+{" HOME: ","bash ~/repos/personal/dwmblocks/status.sh status_router",1,0},
 {" DATE: ","bash ~/repos/personal/dwmblocks/status.sh status_date",1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_wallpaper",300,0},
 };

@@ -51,6 +51,22 @@ status_ip(){
     ip route get 8.8.8.8 | head -1 | awk '{print $7}'
 }
 
+status_internet_access(){
+    if [ "$(ping -c 1 8.8.8.8 -W 1 ; echo $?)" != "0" ] ; then
+        echo yes
+    else
+        echo DOWN
+    fi
+}
+
+status_router(){
+    if [ "$(ping -c 1 192.168.1.1 -W 1 ; echo $?)" != "0" ] ; then
+        echo yes
+    else
+        echo DOWN
+    fi
+}
+
 status_date(){
     date '+%a %b %-m/%d/%Y %I:%M'
 }
