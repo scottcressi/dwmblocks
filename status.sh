@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 status_volume(){
-    amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'
+    amixer sget Master | awk -F'[][]' '/Right:/ { print $2 }'
 }
 
 status_memory(){
@@ -34,7 +34,7 @@ status_network(){
 }
 
 status_disk(){
-    df -h / | grep dev | awk '{print $5}'
+    df -h / | awk '/dev/ {print $5}'
 }
 
 status_cpu(){
@@ -44,7 +44,7 @@ status_cpu(){
 }
 
 status_caps(){
-    xset q | grep Caps | awk '{print $4}'
+    xset q | awk '/Caps/ {print $4}'
 }
 
 status_ip(){
