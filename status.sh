@@ -27,8 +27,7 @@ status_strength(){
 
 status_network(){
     if [ -d /sys/module/battery ] ; then
-        INTERFACE="$(/sbin/iw dev | awk '$1=="Interface"{print $2}')"
-        /sbin/iwconfig "$INTERFACE" | grep ESSID | awk '{print $4}' | sed 's/ESSID://g' | sed 's/"//g'
+        /sbin/iw dev | grep ssid | awk '{print $2}'
     else
         echo n/a
     fi
