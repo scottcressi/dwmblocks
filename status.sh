@@ -19,7 +19,7 @@ status_battery(){
 status_strength(){
     if [ -d /sys/module/battery ] ; then
         INTERFACE="$(/sbin/iw dev | awk '$1=="Interface"{print $2}')"
-        /sbin/iwconfig "$INTERFACE" | grep Signal | awk '{print $4,$5}' | sed 's/level=//g'
+        time /sbin/iw dev "$INTERFACE" link | awk '/signal/ {print $2}'
     else
         echo n/a
     fi
