@@ -5,7 +5,7 @@ status_volume(){
 }
 
 status_memory(){
-    free -h | awk '/^Mem/ { print $3"/"$2 }'
+    awk '/MemAvailable/ {printf( "%.2f\n", $2 / 1024 )}' /proc/meminfo
 }
 
 status_battery(){
