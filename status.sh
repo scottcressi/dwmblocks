@@ -52,16 +52,16 @@ status_ip(){
 }
 
 status_internet_access(){
-    if [ "$(ping -c 1 8.8.8.8 -W 1 ; echo $?)" != "0" ] ; then
-        echo yes
+    if [ "$(ping -c 1 -w -s 8.8.8.8 >/dev/null 2>&1 ; echo $?)" == "0" ] ; then
+        echo up
     else
         echo DOWN
     fi
 }
 
 status_router(){
-    if [ "$(ping -c 1 192.168.1.1 -W 1 ; echo $?)" != "0" ] ; then
-        echo yes
+    if [ "$(ping -c 1 192.168.1.1 -W 1 -q >/dev/null 2>&1 ; echo $?)" == "0" ] ; then
+        echo up
     else
         echo DOWN
     fi
