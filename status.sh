@@ -27,7 +27,7 @@ status_strength(){
 
 status_network(){
     if [ -d /sys/module/battery ] ; then
-        /sbin/iw dev | grep ssid | awk '{print $2}'
+        /sbin/iw dev | awk '/ssid/ {print $2}'
     else
         echo n/a
     fi
