@@ -71,8 +71,4 @@ status_date(){
     date '+%a %b %-m/%d/%Y %I:%M'
 }
 
-status_wallpaper(){
-    find ~/wallpapers/ -type f | shuf | head -1 | xargs xwallpaper --maximize
-}
-
 $1
