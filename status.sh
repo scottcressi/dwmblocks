@@ -51,14 +51,6 @@ status_ip(){
     ip route get 8.8.8.8 | head -1 | awk '{print $7}'
 }
 
-status_internet_access(){
-    if [ "$(ping -c 1 -w -s 8.8.8.8 >/dev/null 2>&1 ; echo $?)" == "0" ] ; then
-        echo up
-    else
-        echo DOWN
-    fi
-}
-
 status_router(){
     if [ "$(ping -c 1 192.168.1.1 -W 1 -q >/dev/null 2>&1 ; echo $?)" == "0" ] ; then
         echo up
