@@ -5,7 +5,9 @@ status_volume(){
 }
 
 status_memory(){
-    awk '/MemAvailable/ {printf( "%.1fg", $2 / 1024 / 1024 )}' /proc/meminfo
+    AVAILABLE="$(awk '/MemAvailable/ {printf( "%.1fg", $2 / 1024 / 1024 )}' /proc/meminfo)"
+    TOTAL="$(awk '/MemTotal/ { printf( "%.1fg", $2 / 1024 / 1024 )}' /proc/meminfo)"
+    echo "$AVAILABLE"/"$TOTAL"
 }
 
 status_battery(){
