@@ -54,7 +54,8 @@ status_ip(){
 }
 
 status_router(){
-    if [ "$(ping -c 1 192.168.1.1 -W 1 -q >/dev/null 2>&1 ; echo $?)" == "0" ] ; then
+    ROUTER=$(ip route | grep default | awk '{print $3}')
+    if [ "$(ping -c 1 "$ROUTER" -W 1 -q >/dev/null 2>&1 ; echo $?)" == "0" ] ; then
         echo up
     else
         echo DOWN
