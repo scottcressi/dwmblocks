@@ -5,9 +5,7 @@ status_volume(){
 }
 
 status_memory(){
-    AVAILABLE="$(awk '/MemAvailable/ {printf( "%.1fg", $2 / 1024 / 1024 )}' /proc/meminfo)"
-    TOTAL="$(awk '/MemTotal/ { printf( "%.1fg", $2 / 1024 / 1024 )}' /proc/meminfo)"
-    echo "$AVAILABLE"/"$TOTAL"
+    awk '/MemAvailable/ {printf( "%.1fg", $2 / 1024 / 1024 )}' /proc/meminfo
 }
 
 status_battery(){
@@ -40,9 +38,7 @@ status_disk(){
 }
 
 status_cpu(){
-    LOAD="$(awk '{print $1}' /proc/loadavg)"
-    CPU="$(lscpu | awk '/^CPU\(/ {print $2}')"
-    echo "$LOAD"/"$CPU"
+    awk '{print $1}' /proc/loadavg
 }
 
 status_caps(){
