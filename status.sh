@@ -50,7 +50,7 @@ status_caps(){
 }
 
 status_ip(){
-    ip route get 8.8.8.8 | head -1 | awk '{print $7}'
+    ip route get 1.2.3.4 | awk '{print $7}'
 }
 
 status_router(){
