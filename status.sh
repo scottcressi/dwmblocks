@@ -41,7 +41,7 @@ status_disk(){
 
 status_cpu(){
     LOAD="$(awk '{print $1}' /proc/loadavg)"
-    CPU="$(lscpu | grep -E '^CPU\(s\)' | awk '{print $2}')"
+    CPU="$(lscpu | awk '/^CPU\(/ {print $2}')"
     echo "$LOAD"/"$CPU"
 }
 
@@ -54,7 +54,7 @@ status_ip(){
 }
 
 status_router(){
-    ROUTER=$(ip route | grep default | awk '{print $3}')
+    ROUTER=$(ip route | awk '/default/ {print $3}')
     if [ "$(ping -c 1 "$ROUTER" -W 1 -q >/dev/null 2>&1 ; echo $?)" == "0" ] ; then
         echo up
     else
