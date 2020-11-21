@@ -50,12 +50,11 @@ status_ip(){
 }
 
 status_router(){
-    ROUTER=$(ip route | awk '/default/ {print $3}' | uniq)
-    if [ "$(ping -c 1 "$ROUTER" -W 1 -q >/dev/null 2>&1 ; echo $?)" == "0" ] ; then
-        echo up
-    else
-        echo DOWN
-    fi
+    for interface in $(ls /sys/class/net/ | grep -v lo) ;
+    do
+      if [[ $(cat /sys/class/net/"$interface"/carrier) = 1 ]] ; then online=1 ; fi
+    done
+    if ! [ $online ] ; then echo "Not online" > /dev/stderr ; else echo "online" ; exit ; fi
 }
 
 status_date(){
