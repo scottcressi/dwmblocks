@@ -59,7 +59,15 @@ status_router(){
 }
 
 status_date(){
-    date '+%a %b %-m/%d/%Y %I:%M'
+    date '+%a %b %-m/%d/%Y %I:%M:%S'
+}
+
+status_containers(){
+    pgrep containerd-shim  | wc -l
+}
+
+status_mounts(){
+    mount  | grep -c 'cifs\|nfs'
 }
 
 $1
