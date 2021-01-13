@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 status_volume(){
     amixer sget Master | awk -F'[][]' '/Right:/ { print $2 }'
@@ -51,7 +51,7 @@ status_ip(){
 
 status_router(){
     ROUTER=$(ip route | awk '/default/ {print $3}' | uniq)
-    if [ "$(ping -c 1 "$ROUTER" -W 1 -q >/dev/null 2>&1 ; echo $?)" == "0" ] ; then
+    if [ "$(ping -c 1 "$ROUTER" -W 1 -q >/dev/null 2>&1 ; echo $?)" = "0" ] ; then
         echo up
     else
         echo DOWN
