@@ -63,7 +63,7 @@ status_date(){
 }
 
 status_containers(){
-    pgrep containerd-shim  | wc -l
+    pgrep -c containerd-shim
 }
 
 status_mounts(){
