@@ -17,8 +17,6 @@ status_battery(){
         if [ "$BAT" -lt 10 ] ; then
             notify-send "$(date)" "BATTERY LOW"
         fi
-    else
-        echo n/a
     fi
 }
 
@@ -27,8 +25,6 @@ status_strength(){
         INTERFACE="$(/sbin/iw dev | awk '$1=="Interface"{print $2}')"
         SIG=$(/sbin/iw dev "$INTERFACE" link | awk '/signal/ {print $2}')
         echo SIG: "$SIG"
-    else
-        echo n/a
     fi
 }
 
@@ -36,8 +32,6 @@ status_network(){
     if [ -d /sys/module/battery ] ; then
         SSID=$(/sbin/iw dev | awk '/ssid/ {print $2}')
         echo SSID: "$SSID"
-    else
-        echo n/a
     fi
 }
 
