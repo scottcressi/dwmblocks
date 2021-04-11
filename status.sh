@@ -14,6 +14,9 @@ status_battery(){
     if [ -d /sys/module/battery ] ; then
         BAT=$(cat /sys/class/power_supply/BAT1/capacity)
         echo BAT: "$BAT"
+        if [ "$BAT" -lt 10 ] ; then
+            notify-send "$(date)" "BATTERY LOW"
+        fi
     else
         echo n/a
     fi
@@ -64,6 +67,7 @@ status_router(){
         echo NET: up
     else
         echo NET: DOWN
+        notify-send "$(date)" "NETWORK DOWN"
     fi
 }
 
