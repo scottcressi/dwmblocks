@@ -1,16 +1,19 @@
 #!/usr/bin/env sh
 
 status_volume(){
-    amixer sget Master | awk -F'[][]' '/Right:/ { print $2 }'
+    VOL=$(amixer sget Master | awk -F'[][]' '/Right:/ { print $2 }')
+    echo VOL: "$VOL"
 }
 
 status_memory(){
-    awk '/MemAvailable/ {printf( "%.1fg", $2 / 1024 / 1024 )}' /proc/meminfo
+    MEM=$(awk '/MemAvailable/ {printf( "%.1fg", $2 / 1024 / 1024 )}' /proc/meminfo)
+    echo MEM: "$MEM"
 }
 
 status_battery(){
     if [ -d /sys/module/battery ] ; then
-        cat /sys/class/power_supply/BAT1/capacity
+        BAT=$(cat /sys/class/power_supply/BAT1/capacity)
+        echo BAT: "$BAT"
     else
         echo n/a
     fi
@@ -19,7 +22,8 @@ status_battery(){
 status_strength(){
     if [ -d /sys/module/battery ] ; then
         INTERFACE="$(/sbin/iw dev | awk '$1=="Interface"{print $2}')"
-        /sbin/iw dev "$INTERFACE" link | awk '/signal/ {print $2}'
+        SIG=$(/sbin/iw dev "$INTERFACE" link | awk '/signal/ {print $2}')
+        echo SIG: "$SIG"
     else
         echo n/a
     fi
@@ -27,34 +31,39 @@ status_strength(){
 
 status_network(){
     if [ -d /sys/module/battery ] ; then
-        /sbin/iw dev | awk '/ssid/ {print $2}'
+        SSID=$(/sbin/iw dev | awk '/ssid/ {print $2}')
+        echo SSID: "$SSID"
     else
         echo n/a
     fi
 }
 
 status_disk(){
-    df -h / | awk '/dev/ {print $5}'
+    DISK=$(df -h / | awk '/dev/ {print $5}')
+    echo DISK: "$DISK"
 }
 
 status_cpu(){
-    awk '{print $1}' /proc/loadavg
+    CPU=$(awk '{print $1}' /proc/loadavg)
+    echo CPU: "$CPU"
 }
 
 status_caps(){
-    xset q | awk '/Caps/ {print $4}'
+    CAP=$(xset q | awk '/Caps/ {print $4}')
+    echo CAP: "$CAP"
 }
 
 status_ip(){
-    ip route get 1.2.3.4 | awk '{print $7}'
+    IP=$(ip route get 1.2.3.4 | awk '{print $7}')
+    echo IP: "$IP"
 }
 
 status_router(){
     ROUTER=$(ip route | awk '/default/ {print $3}' | uniq)
     if [ "$(ping -c 1 "$ROUTER" -W 1 -q >/dev/null 2>&1 ; echo $?)" = "0" ] ; then
-        echo up
+        echo NET: up
     else
-        echo DOWN
+        echo NET: DOWN
     fi
 }
 
@@ -63,11 +72,13 @@ status_date(){
 }
 
 status_containers(){
-    pgrep -c containerd-shim
+    CONTAINER=$(pgrep -c containerd-shim)
+    echo CONTAINER: "$CONTAINER"
 }
 
 status_mounts(){
-    mount  | grep -c 'cifs\|nfs'
+    MOUNT=$(mount  | grep -c 'cifs\|nfs')
+    echo MOUNT: "$MOUNT"
 }
 
 $1
