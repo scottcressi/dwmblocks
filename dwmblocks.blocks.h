@@ -18,6 +18,8 @@ static const Block blocks[] = {
 {"","bash ~/repos/personal/dwmblocks/status.sh status_ip",1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_router",1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_date",1,0},
+
+// end
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
