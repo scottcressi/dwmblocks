@@ -66,7 +66,7 @@ status_router(){
 }
 
 status_date(){
-    date '+%a %b %-m/%d/%Y%_I:%M %S'
+    date '+%a %b %-m/%d/%Y %_I:%M %S'
 }
 
 status_containers(){
