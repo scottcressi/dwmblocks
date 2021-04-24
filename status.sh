@@ -56,7 +56,8 @@ status_ip(){
 }
 
 status_router(){
-    ROUTER=$(ip route | awk '/default/ {print $3}' | uniq)
+    #ROUTER=$(ip route | awk '/default/ {print $3}' | uniq)
+    ROUTER=8.8.8.8
     if [ "$(ping -c 1 "$ROUTER" -W 1 -q >/dev/null 2>&1 ; echo $?)" = "0" ] ; then
         echo NET:up
     else
@@ -77,6 +78,16 @@ status_containers(){
 status_mounts(){
     MOUNT=$(mount  | grep -c 'cifs\|nfs')
     echo MOUNT:"$MOUNT"
+}
+
+status_vpn(){
+    VPN=$(mullvad status | grep -c Connected)
+    if [ "$VPN" = 1 ] ; then
+        echo VPN:up
+    else
+        echo VPN:down
+        notify-send --expire-time 4000 --urgency critical "$(date)" "VPN DOWN"
+    fi
 }
 
 $1
