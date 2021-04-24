@@ -58,7 +58,7 @@ status_ip(){
 status_router(){
     #ROUTER=$(ip route | awk '/default/ {print $3}' | uniq)
     ROUTER=8.8.8.8
-    if [ "$(ping -c 1 "$ROUTER" -W 1 -q >/dev/null 2>&1 ; echo $?)" = "0" ] ; then
+    if [ "$(ping -c 1 "$ROUTER" -W 10 -q > /dev/null 2>&1 ; echo $?)" = "0" ] ; then
         echo NET:up
     else
         echo NET:DOWN
