@@ -62,7 +62,6 @@ status_router(){
         echo NET:up
     else
         echo NET:DOWN
-        notify-send --expire-time 4000 --urgency critical "$(date)" "NETWORK DOWN"
     fi
 }
 
@@ -86,7 +85,6 @@ status_vpn(){
         echo VPN:up
     else
         echo VPN:down
-        notify-send --expire-time 4000 --urgency critical "$(date)" "VPN DOWN"
     fi
 }
 
