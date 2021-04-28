@@ -3,21 +3,21 @@ static const Block blocks[] = {
 /*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 
 // laptop
-{"","bash ~/repos/personal/dwmblocks/status.sh status_battery",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_strength",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_network",1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_battery",5,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_strength",5,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_network",5,0},
 
 // all
-{"","bash ~/repos/personal/dwmblocks/status.sh status_containers",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_mounts",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_volume",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_memory",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_disk",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_cpu",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_caps",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_ip",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_router",10,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_vpn",1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_containers",5,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_mounts",5,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_volume",5,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_memory",5,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_disk",5,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_cpu",5,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_caps",5,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_ip",5,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_router",5,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_vpn",5,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_date",1,0},
 
 // end
