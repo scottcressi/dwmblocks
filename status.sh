@@ -75,7 +75,7 @@ status_containers(){
 }
 
 status_mounts(){
-    MOUNT=$(mount  | grep -c 'cifs\|nfs')
+    MOUNT=$(grep -c 'cifs\|nfs' /etc/mtab)
     echo MOUNT:"$MOUNT"
 }
 
