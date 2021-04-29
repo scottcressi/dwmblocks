@@ -80,7 +80,7 @@ status_mounts(){
 }
 
 status_vpn(){
-    VPN=$(mullvad status | grep -c Connected)
+    VPN=$(ip tuntap | wc -l)
     if [ "$VPN" = 1 ] ; then
         echo VPN:up
     else
