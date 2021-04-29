@@ -20,7 +20,7 @@ status_battery(){
     fi
 }
 
-status_strength(){
+status_signalstrength(){
     if [ -d /sys/module/battery ] ; then
         INTERFACE="$(/sbin/iw dev | awk '$1=="Interface"{print $2}')"
         SIG=$(/sbin/iw dev "$INTERFACE" link | awk '/signal/ {print $2}')
@@ -28,7 +28,7 @@ status_strength(){
     fi
 }
 
-status_network(){
+status_ssid(){
     if [ -d /sys/module/battery ] ; then
         SSID=$(/sbin/iw dev | awk '/ssid/ {print $2}')
         echo SSID:"$SSID"
@@ -55,7 +55,7 @@ status_ip(){
     echo IP:"$IP"
 }
 
-status_router(){
+status_internet(){
     #ROUTER=$(ip route | awk '/default/ {print $3}' | uniq)
     ROUTER=8.8.8.8
     if [ "$(ping -c 1 "$ROUTER" -W 10 -q > /dev/null 2>&1 ; echo $?)" = "0" ] ; then

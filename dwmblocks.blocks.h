@@ -3,29 +3,28 @@ static const Block blocks[] = {
 /*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 
 // laptop
-{"","bash ~/repos/personal/dwmblocks/status.sh status_battery",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_strength",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_network",1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_battery",         1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_signalstrength",  1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_ssid",            1,0},
 
 // misc
-{"","bash ~/repos/personal/dwmblocks/status.sh status_containers",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_mounts",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_volume",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_caps",1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_containers",      1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_mounts",          1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_volume",          1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_caps",            1,0},
 
 // performance
-{"","bash ~/repos/personal/dwmblocks/status.sh status_memory",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_disk",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_cpu",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_caps",1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_memory",          1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_disk",            1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_cpu",             1,0},
 
 // network
-{"","bash ~/repos/personal/dwmblocks/status.sh status_ip",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_vpn",1,0},
-{"","bash ~/repos/personal/dwmblocks/status.sh status_router",10,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_ip",              1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_vpn",             1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_internet",        10,0},
 
 // minimum
-{"","bash ~/repos/personal/dwmblocks/status.sh status_date",1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_date",            1,0},
 
 // end
 };
