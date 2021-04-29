@@ -15,7 +15,7 @@ status_battery(){
         BAT=$(cat /sys/class/power_supply/BAT1/capacity)
         echo BAT:"$BAT"
         if [ "$BAT" -lt 10 ] ; then
-            notify-send --expire-time 4000 --urgency critical "$(date)" "BATTERY LOW"
+            notify-send --expire-time 1000 --urgency critical "$(date)" "BATTERY LOW"
         fi
     fi
 }
