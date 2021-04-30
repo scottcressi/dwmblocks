@@ -108,4 +108,8 @@ status_brightness(){
     fi
 }
 
+status_wallpaper(){
+    find ~/wallpapers/ -type f | shuf | head -1 | xargs xwallpaper --zoom
+}
+
 $1
