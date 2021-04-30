@@ -2,7 +2,7 @@
 
 status_volume(){
     VOL=$(amixer sget Master | awk -F'[][]' '/Right:/ { print $2 }' | sed 's/%//g')
-    if [ "$VOL" -lt 100 ] ; then
+    if [ "$VOL" -ne 100 ] ; then
         echo VOL:"$VOL"
     fi
 }
