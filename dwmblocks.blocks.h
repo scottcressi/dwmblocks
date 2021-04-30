@@ -12,6 +12,7 @@ static const Block blocks[] = {
 {"","bash ~/repos/personal/dwmblocks/status.sh status_mounts",          1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_volume",          1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_caps",            1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_brightness",      1,0},
 
 // performance
 {"","bash ~/repos/personal/dwmblocks/status.sh status_memory",          1,0},

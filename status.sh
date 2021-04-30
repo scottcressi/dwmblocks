@@ -101,4 +101,11 @@ status_vpn(){
     fi
 }
 
+status_brightness(){
+    BRIGHTNESS=$(xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' ')
+    if [ "$BRIGHTNESS" != 1.0 ] ; then
+        echo BRIGHTNESS:"$BRIGHTNESS"
+    fi
+}
+
 $1
