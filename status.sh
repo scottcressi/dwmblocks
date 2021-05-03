@@ -27,8 +27,8 @@ status_signalstrength(){
     if [ -d /sys/module/battery ] ; then
         INTERFACE="$(/sbin/iw dev | awk '$1=="Interface"{print $2}')"
         SIG=$(/sbin/iw dev "$INTERFACE" link | awk '/signal/ {print $2}' | sed 's/-//g')
-        if [ "$SIG" -gt 67 ] ; then
-            echo SIG:"$SIG"
+        if [ "$SIG" -ge 70 ] ; then
+            echo SIG:BAD
         fi
     fi
 }
