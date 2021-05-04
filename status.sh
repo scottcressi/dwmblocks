@@ -71,7 +71,9 @@ status_ip(){
 status_internet(){
     #ROUTER=$(ip route | awk '/default/ {print $3}' | uniq)
     ROUTER=8.8.8.8
-    if [ "$(ping -c 1 "$ROUTER" -q > /dev/null 2>&1 ; echo $?)" -ne 0 ] ; then
+    status=$(nc -z $ROUTER 443 -w 1 ; echo $?)
+    #if [ "$(ping -c 1 "$ROUTER" -q > /dev/null 2>&1 ; echo $?)" -ne 0 ] ; then
+    if [ "$status" != "0" ] ; then
         echo NET:DOWN
     fi
 }
