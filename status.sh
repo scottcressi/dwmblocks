@@ -71,9 +71,7 @@ status_ip(){
 status_internet(){
     #ROUTER=$(ip route | awk '/default/ {print $3}' | uniq)
     ROUTER=8.8.8.8
-    status=$(nc -z $ROUTER 443 -w 1 ; echo $?)
-    #if [ "$(ping -c 1 "$ROUTER" -q > /dev/null 2>&1 ; echo $?)" -ne 0 ] ; then
-    if [ "$status" != "0" ] ; then
+    if [ "$(ping -c 1 "$ROUTER" -W 1 -q > /dev/null 2>&1 ; echo $?)" -ne 0 ] ; then
         echo NET:DOWN
     fi
 }
@@ -100,6 +98,8 @@ status_vpn(){
     VPN=$(ip tuntap | wc -l)
     if [ "$VPN" = 0 ] ; then
         echo VPN:DOWN
+    else
+        echo $(grep Connected /var/log/mullvad-vpn/daemon.log | tail -1 | awk '{ print $32}' | sed 's/"//g' | sed 's/,//g')
     fi
 }
 
@@ -112,6 +112,25 @@ status_brightness(){
 
 status_wallpaper(){
     find ~/wallpapers/ -type f | shuf | head -1 | xargs xwallpaper --zoom
+}
+
+time_status(){
+    echo ; echo volume ; time status_volume ; echo
+    echo ; echo memory ; time status_memory ; echo
+    echo ; echo battery ; time status_battery ; echo
+    echo ; echo strength ; time status_signalstrength ; echo
+    echo ; echo ssid ; time status_ssid ; echo
+    echo ; echo disk ; time status_disk ; echo
+    echo ; echo cpu ; time status_cpu ; echo
+    echo ; echo caps ; time status_caps ; echo
+    echo ; echo ip ; time status_ip ; echo
+    echo ; echo internet ; time status_internet ; echo
+    echo ; echo date ; time status_date ; echo
+    echo ; echo containers ; time status_containers ; echo
+    echo ; echo mounts ; time status_mounts ; echo
+    echo ; echo vpn ; time status_vpn ; echo
+    echo ; echo brightness ; time status_brightness ; echo
+    echo ; echo wallpaper ; time status_wallpaper ; echo
 }
 
 $1
