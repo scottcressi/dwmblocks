@@ -27,9 +27,7 @@ status_signalstrength(){
     if [ -d /sys/module/battery ] ; then
         INTERFACE="$(/sbin/iw dev | awk '$1=="Interface"{print $2}')"
         SIG=$(/sbin/iw dev "$INTERFACE" link | awk '/signal/ {print $2}' | sed 's/-//g')
-        if [ "$SIG" -ge 70 ] ; then
-            echo SIG:BAD
-        fi
+        echo SIG:"$SIG"
     fi
 }
 
@@ -99,7 +97,7 @@ status_vpn(){
     if [ "$VPN" = 0 ] ; then
         echo VPN:DOWN
     else
-        echo $(grep Connected /var/log/mullvad-vpn/daemon.log | tail -1 | awk '{ print $32}' | sed 's/"//g' | sed 's/,//g')
+        grep Connected /var/log/mullvad-vpn/daemon.log | tail -1 | awk '{ print $32}' | sed 's/"//g' | sed 's/,//g'
     fi
 }
 
