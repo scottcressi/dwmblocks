@@ -17,9 +17,7 @@ status_memory(){
 status_battery(){
     if [ -d /sys/module/battery ] ; then
         BAT=$(cat /sys/class/power_supply/BAT1/capacity)
-        if [ "$BAT" -lt 50 ] ; then
-            echo BAT:"$BAT" "$(cat /sys/class/power_supply/BAT1/status)"
-        fi
+        echo BAT:"$BAT" "$(cat /sys/class/power_supply/BAT1/status)"
     fi
 }
 
