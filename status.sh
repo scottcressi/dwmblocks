@@ -95,7 +95,7 @@ status_vpn(){
     if [ "$VPN" = 0 ] ; then
         echo VPN:DOWN
     else
-        grep Connected /var/log/mullvad-vpn/daemon.log | tail -1 | awk '{ print $32}' | sed 's/"//g' | sed 's/,//g'
+        grep Connected /var/log/mullvad-vpn/daemon.log | tail -1 | awk '{ print $32,$34}' | sed 's/"//g' | sed 's/,//g' | sed 's/Some(//g' | sed 's/)//g'
     fi
 }
 
