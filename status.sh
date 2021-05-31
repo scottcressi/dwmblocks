@@ -27,7 +27,11 @@ status_signalstrength(){
     if [ -d /sys/module/battery ] ; then
         INTERFACE="$(/sbin/iw dev | awk '$1=="Interface"{print $2}')"
         SIG=$(/sbin/iw dev "$INTERFACE" link | awk '/signal/ {print $2}' | sed 's/-//g')
-        echo SIG:"$SIG |"
+        if [ "$SIG" -gt 80 ] ; then
+            echo "SIG: unstable |"
+        elif [ "$SIG" -gt 90 ] ; then
+            echo "SIG: unusable |"
+        fi
     fi
 }
 
