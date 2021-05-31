@@ -94,10 +94,18 @@ status_mounts(){
 
 status_vpn(){
     VPN=$(ip tuntap | wc -l)
+    LOCATION=$(grep Connected /var/log/mullvad-vpn/daemon.log | tail -1 | awk '{ print $32,$34}' | sed 's/"//g' | sed 's/,//g' | sed 's/Some(//g' | sed 's/)//g')
     if [ "$VPN" = 0 ] ; then
         echo "VPN:DOWN |"
     else
-        grep Connected /var/log/mullvad-vpn/daemon.log | tail -1 | awk '{ print $32,$34}' | sed 's/"//g' | sed 's/,//g' | sed 's/Some(//g' | sed 's/)//g'
+        echo "$LOCATION |"
+    fi
+}
+
+status_vpn_blocked(){
+    BLOCKED=$(mullvad always-require-vpn get | awk '{print $5}')
+    if [ "$BLOCKED" = "blocked" ] ; then
+        echo "vpn blocking on |"
     fi
 }
 

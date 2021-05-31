@@ -22,6 +22,7 @@ static const Block blocks[] = {
 
 // network
 {"","bash ~/repos/personal/dwmblocks/status.sh status_ip",              1,0},
+{"","bash ~/repos/personal/dwmblocks/status.sh status_vpn_blocked",     1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_vpn",             1,0},
 //{"","bash ~/repos/personal/dwmblocks/status.sh status_internet",        1,0},
 
