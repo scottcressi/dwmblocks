@@ -3,14 +3,14 @@
 status_volume(){
     VOL=$(amixer sget Master | awk -F'[][]' '/Right:/ { print $2 }' | sed 's/%//g')
     if [ "$VOL" -ne 100 ] ; then
-        echo VOL:"$VOL"
+        echo VOL:"$VOL |"
     fi
 }
 
 status_memory(){
     MEM=$(awk '/MemAvailable/ {print $2 / 1024}' /proc/meminfo | sed 's/\..*//g')
     if [ "$MEM" -le "2048" ] ; then
-        echo MEM:"$MEM"
+        echo MEM:"$MEM |"
     fi
 }
 
@@ -18,7 +18,7 @@ status_battery(){
     if [ -d /sys/module/battery ] ; then
         BAT=$(cat /sys/class/power_supply/BAT1/capacity)
         if [ "$BAT" -lt 20 ] ; then
-            echo BAT:"$BAT" "$(cat /sys/class/power_supply/BAT1/status)"
+            echo BAT:"$BAT" "$(cat /sys/class/power_supply/BAT1/status) |"
         fi
     fi
 }
@@ -41,7 +41,7 @@ status_ssid(){
 status_disk(){
     DISK=$(df -h / | awk '/dev/ {print $5}' | sed 's/%//g')
     if [ "$DISK" -gt 50 ] ; then
-        echo DISK:"$DISK"
+        echo DISK:"$DISK |"
     fi
 }
 
@@ -50,14 +50,14 @@ status_cpu(){
     MAX="$PROCESSORS"00
     LOAD=$(awk '{print $1}' /proc/loadavg | sed 's/\.//g')
     if [ "$LOAD" -ge "$MAX" ] ; then
-        echo CPU:"$LOAD"
+        echo CPU:"$LOAD |"
     fi
 }
 
 status_caps(){
     CAP=$(xset q | awk '/Caps/ {print $4}')
     if [ "$CAP" = "on" ] ; then
-        echo CAP:"$CAP"
+        echo CAP:"$CAP |"
     fi
 }
 
@@ -70,7 +70,7 @@ status_internet(){
     #ROUTER=$(ip route | awk '/default/ {print $3}' | uniq)
     ROUTER=8.8.8.8
     if [ "$(ping -c 1 "$ROUTER" -W 1 -q > /dev/null 2>&1 ; echo $?)" -ne 0 ] ; then
-        echo NET:DOWN
+        echo "NET:DOWN |"
     fi
 }
 
@@ -81,14 +81,14 @@ status_date(){
 status_containers(){
     CONTAINER=$(pgrep -c containerd-shim)
     if [ "$CONTAINER" -ne 0 ] ; then
-        echo CONTAINER: "$CONTAINER"
+        echo CONTAINER: "$CONTAINER |"
     fi
 }
 
 status_mounts(){
     MOUNT=$(grep -c 'cifs\|nfs' /etc/mtab)
     if [ "$MOUNT" -ne 0 ] ; then
-        echo MOUNT: "$MOUNT"
+        echo MOUNT: "$MOUNT |"
     fi
 }
 
