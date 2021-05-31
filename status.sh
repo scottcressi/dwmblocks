@@ -27,14 +27,14 @@ status_signalstrength(){
     if [ -d /sys/module/battery ] ; then
         INTERFACE="$(/sbin/iw dev | awk '$1=="Interface"{print $2}')"
         SIG=$(/sbin/iw dev "$INTERFACE" link | awk '/signal/ {print $2}' | sed 's/-//g')
-        echo SIG:"$SIG"
+        echo SIG:"$SIG |"
     fi
 }
 
 status_ssid(){
     if [ -d /sys/module/battery ] ; then
         SSID=$(/sbin/iw dev | awk '/ssid/ {print $2}')
-        echo SSID:"$SSID"
+        echo SSID:"$SSID |"
     fi
 }
 
@@ -63,7 +63,7 @@ status_caps(){
 
 status_ip(){
     IP=$(ip route get 1.2.3.4 | awk '{print $7}')
-    echo IP:"$IP"
+    echo IP:"$IP |"
 }
 
 status_internet(){
@@ -95,7 +95,7 @@ status_mounts(){
 status_vpn(){
     VPN=$(ip tuntap | wc -l)
     if [ "$VPN" = 0 ] ; then
-        echo VPN:DOWN
+        echo "VPN:DOWN |"
     else
         grep Connected /var/log/mullvad-vpn/daemon.log | tail -1 | awk '{ print $32,$34}' | sed 's/"//g' | sed 's/,//g' | sed 's/Some(//g' | sed 's/)//g'
     fi
@@ -104,7 +104,7 @@ status_vpn(){
 status_brightness(){
     BRIGHTNESS=$(xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' ')
     if [ "$BRIGHTNESS" != 1.0 ] ; then
-        echo BRIGHTNESS:"$BRIGHTNESS"
+        echo BRIGHTNESS:"$BRIGHTNESS |"
     fi
 }
 
