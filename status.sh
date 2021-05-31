@@ -34,7 +34,9 @@ status_signalstrength(){
 status_ssid(){
     if [ -d /sys/module/battery ] ; then
         SSID=$(/sbin/iw dev | awk '/ssid/ {print $2}')
-        echo SSID:"$SSID |"
+        if [ "$SSID" = "" ] ; then
+            echo "SSID NOT CONNECTED |"
+        fi
     fi
 }
 
