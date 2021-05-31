@@ -100,11 +100,11 @@ status_mounts(){
 
 status_vpn(){
     VPN=$(ip tuntap | wc -l)
-    LOCATION=$(grep Connected /var/log/mullvad-vpn/daemon.log | tail -1 | sed 's/.*country/country/g' | sed 's/, latit.*//g')
+    LOCATION=$(grep Connected /var/log/mullvad-vpn/daemon.log | tail -1 | sed 's/.*country: //g' | sed 's/, latitude.*//g' | sed 's/, city: Some(//g' | sed 's/)//g')
     if [ "$VPN" = 0 ] ; then
         echo "VPN:DOWN |"
     else
-        echo "$LOCATION |"
+        echo "VPN:$LOCATION |"
     fi
 }
 
