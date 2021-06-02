@@ -81,7 +81,7 @@ status_internet(){
 }
 
 status_date(){
-    date '+%a %b %-m/%d/%Y %_I:%M %S'
+    date '+%a %b %-m/%d/%g%_I:%M'
 }
 
 status_containers(){
