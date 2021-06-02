@@ -154,8 +154,10 @@ time_status(){
     echo ; echo containers ; time status_containers ; echo
     echo ; echo mounts ; time status_mounts ; echo
     echo ; echo vpn ; time status_vpn ; echo
+    echo ; echo vpn_blocked ; time status_vpn_blocked ; echo
     echo ; echo brightness ; time status_brightness ; echo
     echo ; echo wallpaper ; time status_wallpaper ; echo
+    echo ; echo git ; time status_git ; echo
 }
 
 $1
