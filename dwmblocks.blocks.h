@@ -8,6 +8,7 @@ static const Block blocks[] = {
 {"","bash ~/repos/personal/dwmblocks/status.sh status_ssid",            1,0},
 
 // misc
+{"","bash ~/repos/personal/dwmblocks/status.sh status_git",             1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_containers",      1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_mounts",          1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_volume",          1,0},

@@ -126,6 +126,19 @@ status_wallpaper(){
     find ~/wallpapers/ -maxdepth 1 -type f | shuf | head -1 | xargs xwallpaper --maximize
 }
 
+status_git(){
+    COUNTER=0
+    #FOO=$(( $COUNTER+1 ))
+    #echo $FOO
+    for i in $(find ~/repos/personal -maxdepth 1 -mindepth 1 -type d) ; do
+        CHANGES=$(git -C "$i" status -s | wc -l)
+        COUNTER=$(( $COUNTER+$CHANGES ))
+    done
+    if [ $COUNTER != 0 ] ; then
+        echo GIT:"$COUNTER |"
+    fi
+}
+
 time_status(){
     echo ; echo volume ; time status_volume ; echo
     echo ; echo memory ; time status_memory ; echo
