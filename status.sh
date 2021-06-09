@@ -139,6 +139,12 @@ status_git(){
     fi
 }
 
+status_updates(){
+    sudo apt-get update -q -q
+    PACKAGES=$(apt-get -s dist-upgrade | grep "^[[:digit:]]\\+ upgraded" | sed 's/installed.*/installed/g')
+    echo PACKAGES:"$PACKAGES |"
+}
+
 time_status(){
     echo ; echo volume ; time status_volume ; echo
     echo ; echo memory ; time status_memory ; echo
@@ -158,6 +164,7 @@ time_status(){
     echo ; echo brightness ; time status_brightness ; echo
     echo ; echo wallpaper ; time status_wallpaper ; echo
     echo ; echo git ; time status_git ; echo
+    echo ; echo updates ; time status_updates ; echo
 }
 
 $1
