@@ -53,7 +53,7 @@ status_disk(){
 
 status_cpu(){
     PROCESSORS=$(grep -c processor /proc/cpuinfo)
-    MAX="$PROCESSORS"00
+    MAX=$(($PROCESSORS / 2))00
     LOAD=$(awk '{print $1}' /proc/loadavg | sed 's/\.//g')
     if [ "$LOAD" -ge "$MAX" ] ; then
         echo CPU:"$LOAD |"
