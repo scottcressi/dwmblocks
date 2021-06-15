@@ -8,7 +8,6 @@ static const Block blocks[] = {
 {"","bash ~/repos/personal/dwmblocks/status.sh status_ssid",            1,0},
 
 // misc
-//{"","bash ~/repos/personal/dwmblocks/status.sh status_updates",         1800,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_git",             1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_containers",      1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_mounts",          1,0},
@@ -23,10 +22,8 @@ static const Block blocks[] = {
 {"","bash ~/repos/personal/dwmblocks/status.sh status_cpu",             1,0},
 
 // network
-//{"","bash ~/repos/personal/dwmblocks/status.sh status_ip",              1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_vpn_blocked",     1,0},
 {"","bash ~/repos/personal/dwmblocks/status.sh status_vpn",             1,0},
-//{"","bash ~/repos/personal/dwmblocks/status.sh status_internet",        1,0},
 
 // minimum
 {"","bash ~/repos/personal/dwmblocks/status.sh status_date",            1,0},
