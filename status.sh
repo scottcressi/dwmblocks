@@ -85,7 +85,7 @@ status_date(){
 }
 
 status_containers(){
-    CONTAINER=$(pgrep -c containerd-shim)
+    CONTAINER=$(sudo ls /var/lib/docker/containers/ | wc -l)
     if [ "$CONTAINER" -ne 0 ] ; then
         echo CONTAINER: "$CONTAINER |"
     fi
