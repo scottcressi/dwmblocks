@@ -121,8 +121,8 @@ status_vpn_blocked(){
 }
 
 status_brightness(){
-    BRIGHTNESS=$(xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' ')
-    if [ "$BRIGHTNESS" != 1.0 ] ; then
+    BRIGHTNESS=$(cat /sys/class/backlight/*/brightness)
+    if [ "$BRIGHTNESS" != 1500 ] ; then
         echo BRIGHTNESS:"$BRIGHTNESS |"
     fi
 }
