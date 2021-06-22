@@ -61,9 +61,9 @@ status_cpu(){
 }
 
 status_caps(){
-    CAP=$(xset q | awk '/Caps/ {print $4}')
-    if [ "$CAP" = "on" ] ; then
-        echo CAP:"$CAP |"
+    CAP=$(cat /sys/devices/platform/i8042/serio0/input/input0/input0::capslock/brightness)
+    if [ "$CAP" = 1 ] ; then
+        echo CAP:"on |"
     fi
 }
 
