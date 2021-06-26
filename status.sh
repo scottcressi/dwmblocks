@@ -98,14 +98,6 @@ status_mounts(){
     fi
 }
 
-status_vpn_location(){
-    VPN=$(mullvad status | grep -c Connected)
-    LOCATION=$(mullvad status --location | grep Location:)
-    if [ "$VPN" = 1 ] ; then
-        echo "$LOCATION |"
-    fi
-}
-
 status_vpn(){
     VPN=$(mullvad status | grep -c Connected)
     if [ "$VPN" != 1 ] ; then
