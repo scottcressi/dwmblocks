@@ -109,6 +109,8 @@ status_vpn_blocked(){
     BLOCKED=$(mullvad always-require-vpn get | awk '{print $5}')
     if [ "$BLOCKED" = "allowed" ] ; then
         echo "vpn blocking off |"
+    else
+        echo "vpn blocking on |"
     fi
 }
 
